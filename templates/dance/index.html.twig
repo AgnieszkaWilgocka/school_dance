@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ 'title.dance_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.dance_list'|trans }}</h1>
+    {% if dances is defined and dances|length %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ 'label_id'|trans }}</th>
+            <th>{{ 'label_name'|trans }}</th>
+            <th>{{ 'label_fields'|trans }}</th>
+            <th>{{ 'label_actions'|trans }}</th>
+        </tr>
+        </thead>
+
+        {% for dance in dances %}
+        <tr>
+            <td>{{ dance.id }}</td>
+            <td>{{ dance.name }}</td>
+            <td>{{ dance.field }}</td>
+            <td>
+                <a href="{{ url('dance_show', {id: dance.id}) }}" title="{{ 'action_view'|trans }}">
+                    {{ 'action_view'|trans }}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <p>
+        {{ 'message.empty_list'|trans }}
+    </p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ 'title.dance.details'|trans }}
+{% endblock %}
+
+
+{% block body %}
+<h1>{{ 'title.dance.details'|trans }}</h1>
+
+
+{% if dance is defined and dance|length %}
+<dl class="dl-horizontal">
+    <dt>{{ 'label.id'|trans }}</dt>
+    <dd>{{ dance.id }}</dd>
+    <dt>{{ 'label.name'|trans }}</dt>
+    <dd>{{ dance.name }}</dd>
+    <dt>{{ 'label_fields'|trans }}</dt>
+    <dd>{{ dance.field }}</dd>
+</dl>
+
+<p>
+    <a href="{{ url('dance_index') }}" title="{{ 'action.back_to_list'|trans }}">
+        {{ 'action.back_to_list'|trans }}
+    </a>
+</p>
+
+{% else %}
+<p>
+    {{ 'message.record_not_found'|trans }}
+</p>
+{% endif %}
+{% endblock %}
