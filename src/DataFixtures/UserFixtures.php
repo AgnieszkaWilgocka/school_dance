@@ -5,10 +5,11 @@ namespace App\DataFixtures;
 use App\Entity\Enum\UserRole;
 use App\Entity\User;
 use App\Entity\UserData;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 //use App\DataFixtures\AbstractBaseFixtures;
 
-class UserFixtures extends AbstractBaseFixtures
+class UserFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     private UserPasswordHasherInterface $passwordHasher;
 

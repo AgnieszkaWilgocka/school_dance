@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ 'title.myClasses_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+
+
+{#    <h1>{{ 'title.myClasses_list'|trans }}</h1>#}
+    <h1 class="h-classes">Jesteś zapisany na następujące zajęcia: </h1>
+    <div class="my-classes_container">
+
+    {% if pagination is defined and pagination|length %}
+{#        <table class="table table-striped">#}
+{#            <thead>#}
+{#            <tr>#}
+        <div class="my-classes_info">
+{#            <p>{{ 'label_name'|trans }}</p>#}
+            <p>Zajęcia</p>
+{#            <p>{{ 'label_actions'|trans }}</p>#}
+            <p>Akcje</p>
+        </div>
+{#                <th>{{ 'label_name'|trans }}</th>#}
+{#                <th>{{ 'label_actions'|trans }}</th>#}
+{#            </tr>#}
+{#            </thead>#}
+            {% for my_classes in pagination.items %}
+                <div class="classes-flex">
+
+{#                <div class="my-classes">#}
+
+{#                <tr>#}
+                <p>{{ my_classes.dance.name }}</p>
+{#                </div>#}
+{#                    <td>{{ my_classes.dance.name }}</td>#}
+{#                </tr>#}
+{#                    <td>#}
+{#                <div class="my-classes-delete">#}
+                        <p>
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="{{ url('my_classes_delete', {id: my_classes.id}) }}" title="{{ 'action_delete'|trans }}">
+                                Wypisz się
+{#                            {{ 'action_delete'|trans }}#}
+                            </a>
+                        </p>
+{#                </div>#}
+                </div>
+{#                    </td>#}
+
+{#                </tr>#}
+            {% endfor %}
+{#        </table>#}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <p>{{ 'message.empty_list'|trans }}</p>
+    {% endif %}
+    </div>
+{#    <div class="header">#}
+{#        <div class="logo">#}
+{#            <div class="img-container">#}
+{#                #}{#            <img src="{{ asset('images/logo.png') }}" alt="logo">#}
+{#            </div>#}
+{#            <div class="h-containter">#}
+{#                <h1 class="head">Szkoła Tańca <span>Neon</span></h1>#}
+{#                #}{#        <p>Neon</p>#}
+{#            </div>#}
+
+{#        </div>#}
+{#    </div>#}
+
+{#    #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#}
+{#    <h1>{{ 'title.myClasses_list'|trans }}</h1>#}
+{#    {% if pagination is defined and pagination|length %}#}
+{#    <table class="table table-striped">#}
+{#    <thead>#}
+{#    <tr>#}
+{#        <th>{{ 'label_name'|trans }}</th>#}
+{#        <th>{{ 'label_actions'|trans }}</th>#}
+{#    </tr>#}
+{#    </thead>#}
+
+{#    {% for my_classes in pagination.items %}#}
+{#        <tr>#}
+{#            <td>{{ my_classes.dance.name }}</td>#}
+{#            <td>#}
+{#                <a href="{{ url('my_classes_delete', {id: my_classes.id}) }}" title="{{ 'action_delete'|trans }}">#}
+{#                    {{ 'action_delete'|trans }}#}
+{#                </a>#}
+{#            </td>#}
+
+{#        </tr>#}
+{#    {% endfor %}#}
+{#    </table>#}
+{#        <div class="navigation text-center">#}
+{#            {{ knp_pagination_render(pagination) }}#}
+{#        </div>#}
+{#    {% else %}#}
+{#        <p>{{ 'message.empty_list'|trans }}</p>#}
+{#    {% endif %}#}
+{% endblock %}

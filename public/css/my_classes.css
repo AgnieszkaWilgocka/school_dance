@@ -1,0 +1,110 @@
+h1.h-classes {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.h-header > a {
+    text-decoration: none;
+    color: inherit;
+}
+/*.info-flex > p {*/
+/*    text-decoration: none;*/
+/*    color: inherit;*/
+/*}*/
+
+.my-classes_header {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    /*height: 20vh;*/
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
+}
+
+.head-image {
+    width: 150px;
+    height: 150px;
+    /*padding-right: 20px;*/
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-bottom: 2px dotted deeppink;
+}
+
+.h-header {
+    height: 150px;
+    padding: 0 20px;
+    color: #fff;
+    line-height: 150px;
+    font-size: 35px;
+    border-bottom: 2px dotted deeppink;
+}
+
+
+.my-classes_container {
+    max-width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+    /*border-radius: 1%;*/
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%)
+}
+
+.my-classes_info {
+    /*background-color: gray;*/
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.my-classes_info > p {
+    font-size: 25px;
+    color: #fff;
+    padding: 20px;
+}
+
+.classes-flex {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*border-left: 2px dotted deeppink;*/
+}
+
+.classes-flex:nth-last-of-type(odd) {
+    border-left: 2px solid #58a2de;
+
+}
+
+.classes-flex:nth-last-of-type(even) {
+    border-right: 2px solid #58a2de;
+
+}
+
+.classes-flex > p {
+    font-size: 20px;
+    color: #fff;
+    padding: 20px;
+
+}
+
+.classes-flex > p > a {
+    text-decoration: none;
+    color: #58a2de;
+}
+
+
+
+/*.my-classes {*/
+/*    display: flex;*/
+/*    flex-direction: ;*/
+/*}*/
+/*.my-classes_container p {*/
+/*    color: #000;*/
+/*}*/

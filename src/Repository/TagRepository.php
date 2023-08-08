@@ -17,6 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TagRepository extends ServiceEntityRepository
 {
+    public const PAGINATOR_ITEMS_PER_PAGE = 5;
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tag::class);

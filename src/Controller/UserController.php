@@ -7,6 +7,8 @@ use App\Entity\UserData;
 use App\Repository\UserRepository;
 use App\Form\Type\ChangePasswordType;
 use App\Service\UserServiceInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,18 +31,26 @@ class UserController extends AbstractController
     }
 
     /**
+     * @param Request $request
      * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route(name: 'user_index', methods: 'GET')]
-    public function index(UserRepository $userRepository): Response
+    public function index(Request $request, UserRepository $userRepository, PaginatorInterface $paginator): Response
     {
-        $users = $userRepository->findAll();
+        $pagination = $paginator->paginate(
+            $userRepository->queryAll(),
+            $request->query->getInt('page', 1),
+            UserRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
 
         return $this->render(
             'user/index.html.twig',
-            ['users' => $users]
+            ['pagination' => $pagination]
         );
     }
 
@@ -48,6 +58,9 @@ class UserController extends AbstractController
      * @param User $user
      *
      * @return Response
+     *
+     * @IsGranted("USER_VIEW", subject="user")
+     *
      */
     #[Route(
         '/{id}',
@@ -71,6 +84,8 @@ class UserController extends AbstractController
      * @param UserPasswordHasherInterface $passwordHasher
      *
      * @return Response
+     *
+     * @IsGranted("USER_EDIT", subject="user")
      */
     #[Route(
         '/{id}/edit',

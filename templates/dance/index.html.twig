@@ -5,35 +5,107 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.dance_list'|trans }}</h1>
-    {% if dances is defined and dances|length %}
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>{{ 'label_id'|trans }}</th>
-            <th>{{ 'label_name'|trans }}</th>
-            <th>{{ 'label_fields'|trans }}</th>
-            <th>{{ 'label_actions'|trans }}</th>
-        </tr>
-        </thead>
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
 
-        {% for dance in dances %}
-        <tr>
-            <td>{{ dance.id }}</td>
-            <td>{{ dance.name }}</td>
-            <td>{{ dance.field }}</td>
-            <td>
-                <a href="{{ url('dance_show', {id: dance.id}) }}" title="{{ 'action_view'|trans }}">
-                    {{ 'action_view'|trans }}
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h1 class="dance-h1">{{ 'title.dance_list'|trans }}</h1>
 
-    {% else %}
-    <p>
-        {{ 'message.empty_list'|trans }}
-    </p>
+        {% if pagination is defined and pagination.items|length %}
+            <div class="dances-box">
+
+            {% for dance in pagination.items %}
+        <div class="dance-card">
+            <h4>{{ dance.name }}</h4>
+            <p><strong>Liczba miejsc:</strong>{{ dance.field }}</p>
+            <p><strong>Tagi:</strong>
+                {% if dance.tags is defined and dance.tags|length %}
+                    {% for tag in dance.tags %}
+                        <a href="{{ url('dance_index', {'filters.tag_id': tag.id}) }}" title="{{ tag.title }}">
+                            {{ tag.title }}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </p>
+
+{#                {% if is_granted('ROLE_USER') %}#}
+            <div class="dance-btn">
+            <button>
+                    <a href="{{ url('dance_signing', {id: dance.id}) }}" title="{{ 'action_sign'|trans }}">
+                        {{ 'action_sign'|trans }}
+                    </a>
+            </button>
+            </div>
+
+{#                {% endif %}#}
+        </div>
+            {% endfor %}
+            </div>
     {% endif %}
+{#    <h1>{{ 'title.dance_list'|trans }}</h1>#}
+{#    {% if pagination is defined and pagination.items|length %}#}
+{#    <table class="table table-striped">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>{{ 'label.id'|trans }}</th>#}
+{#            <th>{{ 'label.name'|trans }}</th>#}
+{#            <th>{{ 'label.fields'|trans }}</th>#}
+{#            <th>{{ 'label.actions'|trans }}</th>#}
+{#            <th>{{ 'label.tags'|trans }}</th>#}
+{#        </tr>#}
+{#        </thead>#}
+
+{#        {% for dance in pagination.items %}#}
+{#        <tr>#}
+{#            <td>{{ dance.id }}</td>#}
+{#            <td>{{ dance.name }}</td>#}
+{#            <td>{{ dance.field }}</td>#}
+{#            <td>#}
+{#                <a href="{{ url('dance_show', {id: dance.id}) }}" title="{{ 'action_view'|trans }}">#}
+{#                    {{ 'action_view'|trans }}#}
+{#                </a>#}
+{#                {% if is_granted('ROLE_USER') %}#}
+{#                <a href="{{ url('dance_create') }}" title="{{ 'action_create'|trans }}">#}
+{#                    {{ 'action_create'|trans }}#}
+{#                </a>#}
+{#                <a href="{{ url('dance_edit', {id: dance.id}) }}" title="{{ 'action_edit'|trans }}">#}
+{#                    {{ 'action_edit'|trans }}#}
+{#                </a>#}
+{#                <a href="{{ url('dance_delete', {id: dance.id}) }}" title="{{ 'action_delete'|trans }}">#}
+{#                    {{ 'action_delete'|trans }}#}
+{#                </a>#}
+{#                {% endif %}#}
+{#                {% if is_granted('ROLE_USER') %}#}
+{#                <a href="{{ url('dance_signing', {id: dance.id}) }}" title="{{ 'action_sign'|trans }}">#}
+{#                    {{ 'action_sign'|trans }}#}
+{#                </a>#}
+{#                {% endif %}#}
+{#            </td>#}
+{#            <td>#}
+{#                {% if dance.tags is defined and dance.tags|length %}#}
+{#                    {% for tag in dance.tags %}#}
+{#                        <a href="{{ url('dance_index', {'filters.tag_id': tag.id}) }}" title="{{ tag.title }}">#}
+{#                            {{ tag.title }}#}
+{#                        </a>#}
+{#                    {% endfor %}#}
+{#                {% else %}#}
+{#                    &nbsp;#}
+{#                {% endif %}#}
+{#            </td>#}
+{#        </tr>#}
+
+{#        {% endfor %}#}
+{#    </table>#}
+    <div class="pagination-center">
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+
+{#    {% else %}#}
+{#    <p>#}
+{#        {{ 'message.empty_list'|trans }}#}
+{#    </p>#}
+{#    {% endif %}#}
 {% endblock %}

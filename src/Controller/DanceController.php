@@ -3,8 +3,12 @@
 
 namespace App\Controller;
 
+use App\Entity\MyClasses;
 use App\Form\Type\DanceType;
+use App\Repository\MyClassesRepository;
 use App\Service\DanceServiceInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\DanceRepository;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -20,27 +24,41 @@ class DanceController extends AbstractController
     private DanceServiceInterface $danceService;
 
     private TranslatorInterface $translator;
-    public function __construct(DanceServiceInterface $danceService, TranslatorInterface $translator)
+
+    private MyClassesRepository $myClassesRepository;
+    public function __construct(DanceServiceInterface $danceService, TranslatorInterface $translator, MyClassesRepository $myClassesRepository)
     {
         $this->danceService = $danceService;
         $this->translator = $translator;
+        $this->myClassesRepository = $myClassesRepository;
     }
 
     /**
-     * @param DanceRepository $danceRepository
+     *
      *
      * @return Response
      *
      */
     #[Route(name: 'dance_index', methods: 'GET')]
-    public function index(DanceRepository $danceRepository): Response
+    public function index(Request $request): Response
     {
-        $dances = $danceRepository->findAll();
+        $filters = $this->getFilters($request);
+       $pagination = $this->danceService->getPaginatedList(
+           $request->query->getInt('page', 1), $filters
+       );
 
         return $this->render(
             'dance/index.html.twig',
-            ['dances' => $dances]
+            ['pagination' => $pagination]
         );
+    }
+
+    public function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['tag_id'] = $request->query->getInt('filters_tag_id');
+
+        return $filters;
     }
     #[Route('/{id}',
     name: 'dance_show',
@@ -57,8 +75,84 @@ class DanceController extends AbstractController
 
     /**
      * @param Request $request
+     * @param Dance $dance
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_USER")
+     */
+    #[Route(
+        '/{id}/class',
+        name: 'dance_signing',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET|PUT'
+    )]
+    public function singing(Request $request, Dance $dance): Response
+    {
+        $myClassees = new MyClasses();
+        $user = $this->getUser();
+        $myClassees->setAuthor($user);
+//        $tance = $myClasses->getId();
+
+
+        $form = $this->createForm(DanceType::class, $dance,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('dance_signing', ['id' => $dance->getId()]),
+            ]
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $dance_name = $form->get("name")->getData();
+            var_dump($dance_name);
+//            if($dance_name == $myClasses->getDance()->getName()) {
+//                if($user->getId() == $myClasses->getAuthor()->getId()) {
+//                    return $this->redirectToRoute('dance_index');
+//                }
+//            }
+
+
+
+            //ze juz jakies zajecia ma
+            //var_dump($myClasses->getId());
+            //if($user->getId() === $myClasses->getAuthor()->getId()) {
+
+            //}
+//            $check = $myClasses->getDance();
+//            if ($check->getName() == $dance->getName()) {
+//                if ($user->getId() == $myClasses->getAuthor()->getId()) {
+//                    return $this->redirectToRoute('dance_index');
+//                }
+//            }
+            $spot = $form->get("field")->getData();
+            $spot--;
+            $myClassees->setDance($dance);
+            $dance->setField($spot);
+
+            $this->myClassesRepository->save($myClassees);
+            $this->danceService->save($dance);
+
+            return $this->redirectToRoute('my_classes_index');
+        }
+
+        return $this->render(
+            'dance/signing.html.twig',
+            [
+                'form' => $form->createView(),
+                'dance' =>$dance,
+//                'tance' => $tance,
+
+            ]
+        );
+    }
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route('/create',
     name: 'dance_create',
@@ -87,6 +181,14 @@ class DanceController extends AbstractController
         );
     }
 
+    /**
+     * @param Request $request
+     * @param Dance $dance
+     *
+     * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
+     */
     #[Route(
         '/{id}/edit',
         name: 'dance_edit',
@@ -131,6 +233,8 @@ class DanceController extends AbstractController
      * @param Dance $dance
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route(
         '/{id}/delete',

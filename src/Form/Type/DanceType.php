@@ -37,7 +37,7 @@ class DanceType extends AbstractType
             [
                 'label' => 'label.field',
                 'required' => true,
-                'choices' => range(1,20),
+                'choices' => range(2,21),
             ]
         );
 

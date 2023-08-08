@@ -1,0 +1,86 @@
+/*html, body {*/
+/*    height: 100%;*/
+/*    background: rgb(0,0,0);*/
+/*    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);*/
+
+/*}*/
+.register-container {
+    /*height: 1200px;*/
+    /*height: 500px;*/
+    /*width: 1200px;*/
+    width: 100%;
+    padding: 30px 30px 80px;
+    /*margin: 20px auto;*/
+    margin: 0 auto;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
+    /*filter: blur(8px);*/
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
+}
+/*.h-box {*/
+/*    height: 4;*/
+/*}*/
+h1.h-register {
+    /*text-align: center;*/
+    color: #fff;
+    padding: 20px;
+    /*line-height: 400px;*/
+}
+
+h1.h-register:first-letter {
+    color: deeppink;
+}
+
+.form-btn {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 7%;
+    /*text-align: center;*/
+}
+
+/*.form-text-container {*/
+/*    line-height: 400px;*/
+/*    !*padding-right: 20px;*!*/
+/*}*/
+
+.form-register-container {
+    /*width: 500px;*/
+    /*margin: 0 auto;*/
+    padding-left: 20px;
+    color: #fff;
+    border-left: 3px dotted deeppink;
+    height: 438px;
+}
+p.account-click {
+    padding: 20px;
+    color: #fff;
+    line-height: 438px;
+}
+
+a.account {
+    color: #fff;
+    font-weight: bolder;
+    transition: .2s;
+}
+
+a.account:hover  {
+    color: #58a2de;
+    /*color: deeppink;*/
+}
+/*.form-text-container > p {*/
+/*    font-size: 20px;*/
+/*}*/
+
+@media (min-width: 576px) {
+    .col-sm-2 {
+        flex: none;
+        width: 100%;
+    }
+}

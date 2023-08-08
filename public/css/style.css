@@ -1,3 +1,115 @@
-p {
-    color: red;
+.header {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
+    /*background-color: #000;*/
+    /*background-color: rgb(36, 6, 106);*/
+    /*background: rgb(2,0,36);*/
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(13,13,115,1) 59%, rgba(17,14,94,1) 100%);*/
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*border-bottom: 3px dotted deeppink;*/
+    /*cornflowerblue;*/
+}
+
+.img-container {
+    height: 508px;
+    width: 500px;
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px dotted deeppink;
+
+    /*background-size: contain;*/
+}
+
+h1.head {
+    color: #fff;
+    font-size: 60px;
+    line-height: 500px;
+    text-align: center;
+    margin-left: 40px;
+    /*border-bottom: 3px dotted deeppink;*/
+
+    /*font-family: 'Edu SA Beginner', cursive;*/
+}
+span {
+    display: inline-block;
+}
+span::first-letter {
+    color: deeppink;
+}
+ul.menu {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    /*top: 50%;*/
+    /*margin-left: 20px;*/
+    /*justify-content: space-between;*/
+}
+ul.menu li {
+    position: relative;
+    padding: 30px 20px 0;
+    list-style: none;
+    overflow: hidden;
+    transition: .2s;
+    color: #fff;
+}
+
+ul.menu li:hover{
+    color: #58a2de;
+}
+
+ul.menu li a {
+    font-size: 18px;
+    text-decoration: none;
+    /*color: #fff;*/
+    /*border-right: 2px solid #fff;*/
+    padding: 0 5px;
+    text-align: center;
+    font-style: italic;
+    color: inherit;
+    /*transition: .2s;*/
+
+}
+
+/*.menu li a:hover {*/
+/*    color: #58a2de;*/
+    /*transform: scale(2.2);*/
+
+/*}*/
+
+
+
+/*@keyframes move {*/
+/*    100% {*/
+/*        top: -100%;*/
+/*    }*/
+
+/*}*/
+.menu li::after {
+    content: "";
+    display: block;
+    position: relative;
+    top: 0;
+    left: 100%;
+    /*top: 15px;*/
+    /*left: 0;*/
+    width: 2px;
+    height: 100%;
+    background-color: deeppink;
+    transition: .2s;
+
+}
+
+.menu li:hover::after {
+    top: -100%;
+
+
 }

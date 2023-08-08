@@ -5,20 +5,53 @@
 {% endblock %}
 
 {% block body %}
-<h1>{{ 'title.user_details'|trans }}</h1>
-    {% if user is defined and user|length %}
-    <dl class="dl-horizontal">
-        <dt>{{ 'label.email'|trans }}</dt>
-        <dd>{{ user.email }}</dd>
-        <dt>{{ 'label.nick'|trans }}</dt>
-        <dd>{{ user.userData.nick }}</dd>
-    </dl>
 
-    <p>
-        <a href="{{ url('user_index') }}" title="{{ 'action.back_to_list'|trans }}">
-            {{ 'action.back_to_list'|trans }}
-        </a>
-    </p>
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+
+{#<h1>{{ 'title.user_details'|trans }}</h1>#}
+
+    {% if user is defined and user|length %}
+        <div class="user-container">
+{#            <div class="user-img"></div>#}
+{#            <h3>{{  }}</h3>#}
+            <h4><i class="fa-solid fa-user"></i>Profil tancerza</h4>
+            <p>{{ 'label.nick'|trans }} : {{ user.userData.nick }} <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}"><i class="fa-solid fa-pen-to-square"></i></a></p>
+            <p>{{ 'label.email' }} : {{ user.email }}</p>
+            <div class="user-info">
+{#                <button>#}
+{#                <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}">#}
+{#                    {{ 'action_edit_nick'|trans }}#}
+{#                </a>#}
+{#                </button>#}
+                <button class="user-btn">
+                    <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_edit'|trans }}">
+{#                        {{ 'action_change_password'|trans }}#}
+                        Zmień hasło
+                    </a>
+                </button>
+                <button class="user-btn">
+                    <a href="{{ url('my_classes_index') }}" title="{{ 'action_view_class'|trans }}">
+{#                        {{ 'action_view_class'|trans }}#}
+                        Moje zajęcia
+                    </a>
+                </button>
+            </div>
+{#    <dl class="dl-horizontal">#}
+{#        <dt>{{ 'label.email'|trans }}</dt>#}
+{#        <dd>{{ user.email }}</dd>#}
+{#        <dt>{{ 'label.nick'|trans }}</dt>#}
+{#        <dd>{{ user.userData.nick }}</dd>#}
+{#    </dl>#}
+        </div>
+
+{#    <p>#}
+{#        <a href="{{ url('user_index') }}" title="{{ 'action.back_to_list'|trans }}">#}
+{#            {{ 'action.back_to_list'|trans }}#}
+{#        </a>#}
+{#    </p>#}
 
     {% else %}
     <p>

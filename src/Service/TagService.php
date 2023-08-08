@@ -19,6 +19,11 @@ class TagService implements TagServiceInterface
         return $this->tagRepository->findOneByTitle($title);
     }
 
+    public function findOneById(int $id): ?Tag
+    {
+        return $this->tagRepository->findOneById($id);
+    }
+
     public function save(Tag $tag): void
     {
         $this->tagRepository->save($tag);

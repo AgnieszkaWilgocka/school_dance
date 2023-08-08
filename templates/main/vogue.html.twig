@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ 'vogue_dance'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+
+    <div class="outer-box">
+    <div class="dance-header vogue-dance-img">
+        <h1>{{ 'vogue_dance'|trans }}</h1>
+    </div>
+    </div>
+{% endblock %}

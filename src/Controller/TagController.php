@@ -7,6 +7,8 @@ use App\Form\Type\TagType;
 use App\Repository\TagRepository;
 use App\Service\TagService;
 use App\Service\TagServiceInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,16 +33,22 @@ class TagController extends AbstractController
      * @param TagRepository $tagRepository
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route(name: 'tag_index', methods: 'GET')]
-    public function index(TagRepository $tagRepository): Response
+    public function index(Request $request, TagRepository $tagRepository, PaginatorInterface $paginator): Response
     {
-        $tags = $tagRepository->findAll();
+        $pagination = $paginator->paginate(
+            $tagRepository->queryAll(),
+            $request->query->getInt('page', 1),
+            TagRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
 
         return $this->render(
             'tag/index.html.twig',
             [
-                'tags' => $tags
+                'pagination' => $pagination
             ]
         );
     }
@@ -66,6 +74,13 @@ class TagController extends AbstractController
         );
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
+     */
     #[Route(
         '/create',
         name: 'tag_create',
@@ -105,6 +120,8 @@ class TagController extends AbstractController
      * @param Request $request
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route(
         '/{id}/edit',
@@ -150,6 +167,8 @@ class TagController extends AbstractController
      * @param Request $request
      *
      * @return Response
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     #[Route(
         '/{id}/delete',

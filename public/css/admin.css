@@ -1,0 +1,98 @@
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-container > h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.admin-td > a {
+    color: #07196b;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/*USER*/
+
+.user-container {
+    /*margin-top: 30px;*/
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin: 30px auto;
+    border-left: 2px solid #58a2de;
+
+}
+
+.user-container > h4 {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #58a2de;
+    color: #fff;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
+}
+
+.user-container > p {
+    padding: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+h4 > i {
+    padding-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    width: 100%;
+}
+
+.user-info > button, .action-btn {
+    /*background-color: #fff;*/
+    color: #fff;
+    background-color: #060664;
+    padding: 10px 15px;
+    border-left: 3px solid #58a2de;
+    transition: .2s;
+    /*border-radius: 20%;*/
+}
+
+
+
+/*.user-info > button:hover {*/
+/*    background: rgb(0,0,0);*/
+/*    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%)*/
+/*}*/
+
+button.user-btn > a {
+    color: #fff;
+    text-decoration: none;
+    transition: .2s;
+}
+
+button.user-btn:hover a {
+    color: #58a2de;
+}
+
+/*CRUD*/
+.action-container {
+    padding: 30px;
+    /*text-align: center;*/
+}
+
+.action-btn:hover {
+    color: #58a2de;
+}
+
+/*.action-btn {*/
+/*    padding: 10px 15px;*/
+/*    background-color: #fff;*/
+/*}*/

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Dance;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,15 +18,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DanceRepository extends ServiceEntityRepository
 {
+
+    public const PAGINATOR_ITEMS_PER_PAGE = 6;
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Dance::class);
     }
 
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->where('dance.field > 0')
+            ->leftJoin('dance.tags', 'tags')
             ->orderBy('dance.name', 'DESC');
+
+
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
@@ -53,6 +62,16 @@ class DanceRepository extends ServiceEntityRepository
     {
         $this->_em->remove($dance);
         $this->_em->flush();
+    }
+
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if(isset($filters['tag']) && $filters['tag'] instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')
+                ->setParameter('tag', $filters['tag']);
+        }
+
+        return $queryBuilder;
     }
 //    public function remove(Dance $entity, bool $flush = false): void
 //    {

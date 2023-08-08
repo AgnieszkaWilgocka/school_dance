@@ -5,9 +5,15 @@
 {% endblock %}
 
 {% block body %}
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+
+    <div class="admin-container">
 <h1>{{ 'title.user_list'|trans }}</h1>
 
-    {% if users is defined and users|length %}
+    {% if pagination is defined and pagination.items|length %}
 
     <table class="table table-striped">
     <thead>
@@ -19,31 +25,35 @@
     </tr>
     </thead>
 
-    {% for user in users %}
+    {% for user in pagination.items %}
         <tr>
             <td>{{ user.email }}</td>
             <td>{{ user.userData.nick }}</td>
-            <td>
+            <td class="admin-td">
                 <a href="{{ url('user_show', {id: user.id}) }}" title="{{ 'action_view'|trans }}">
                     {{ 'action_view'|trans }}
                 </a>
-            </td>
-            <td>
-                <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_change'|trans }}">
-                    {{ 'action_change'|trans }}
+{#            </td>#}
+{#            <td>#}
+                <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_edit'|trans }}">
+                    {{ 'action_change_password'|trans }}
                 </a>
-            </td>
-            <td>
+{#            </td>#}
+{#            <td>#}
                 <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}">
                     {{ 'action_edit_nick'|trans }}
                 </a>
             </td>
         </tr>
     {% endfor %}
-
+    </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% else %}
     <p>
         {{ 'message.empty_list'|trans }}
     </p>
+        </div>
     {% endif %}
 {% endblock %}
