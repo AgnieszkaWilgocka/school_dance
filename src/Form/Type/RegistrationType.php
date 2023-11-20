@@ -29,8 +29,8 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'required' => true,
                 'invalid_message' => 'the password fields must match',
-                'first_options' => ['label' => 'label_password'],
-                'second_options' => ['label' => 'label_password_repeat']
+                'first_options' => ['label' => 'label.password'],
+                'second_options' => ['label' => 'label.repeat_password']
             ]
         );
     }

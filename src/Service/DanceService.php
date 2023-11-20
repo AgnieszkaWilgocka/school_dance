@@ -4,7 +4,10 @@ namespace App\Service;
 
 use App\Entity\Dance;
 use App\Repository\DanceRepository;
+use App\Repository\MyClassesRepository;
 use App\Repository\TagRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Knp\Component\Pager\Event\PaginationEvent;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -18,12 +21,15 @@ class DanceService implements DanceServiceInterface
 
     private TagServiceInterface $tagService;
 
+    private MyClassesRepository $myClassesRepository;
 
-    public function __construct(DanceRepository $danceRepository, PaginatorInterface $paginator, TagServiceInterface $tagService)
+
+    public function __construct(DanceRepository $danceRepository, PaginatorInterface $paginator, TagServiceInterface $tagService, MyClassesRepository $myClassesRepository)
     {
         $this->danceRepository = $danceRepository;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
+        $this->myClassesRepository = $myClassesRepository;
     }
 
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
@@ -58,5 +64,16 @@ class DanceService implements DanceServiceInterface
         }
 
         return $resultFilters;
+    }
+
+    public function canBeDeleted(Dance $dance): bool
+    {
+        try {
+            $result = $this->myClassesRepository->countByDance($dance);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
     }
 }

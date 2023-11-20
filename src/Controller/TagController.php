@@ -53,26 +53,26 @@ class TagController extends AbstractController
         );
     }
 
-    /**
-     * @param Tag $tag
-     *
-     * @return Response
-     */
-    #[Route(
-        '/{id}',
-        name: 'tag_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
-    public function show(Tag $tag): Response
-    {
-        return $this->render(
-            'tag/show.html.twig',
-            [
-                'tag' => $tag
-            ]
-        );
-    }
+//    /**
+//     * @param Tag $tag
+//     *
+//     * @return Response
+//     */
+//    #[Route(
+//        '/{id}',
+//        name: 'tag_show',
+//        requirements: ['id' => '[1-9]\d*'],
+//        methods: 'GET'
+//    )]
+//    public function show(Tag $tag): Response
+//    {
+//        return $this->render(
+//            'tag/show.html.twig',
+//            [
+//                'tag' => $tag
+//            ]
+//        );
+//    }
 
     /**
      * @param Request $request

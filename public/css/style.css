@@ -1,4 +1,16 @@
+
+html {
+    scroll-behavior: smooth;
+}/*.container-fluid {*/
+/*    display: none;*/
+/*    !*margin: 0 auto;*!*/
+/*}*/
+.hamburger-menu {
+    display: none;
+}
 .header {
+    /*width: 1300px;*/
+    /*margin: 0 auto;*/
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
     /*background-color: #000;*/
@@ -16,7 +28,7 @@
 }
 
 .img-container {
-    height: 508px;
+    height: 458px;
     width: 500px;
     background-image: url("../images/logo.png");
     background-repeat: no-repeat;
@@ -30,13 +42,14 @@
 h1.head {
     color: #fff;
     font-size: 60px;
-    line-height: 500px;
+    line-height: 450px;
     text-align: center;
     margin-left: 40px;
     /*border-bottom: 3px dotted deeppink;*/
 
     /*font-family: 'Edu SA Beginner', cursive;*/
 }
+
 span {
     display: inline-block;
 }
@@ -45,10 +58,15 @@ span::first-letter {
 }
 ul.menu {
     position: absolute;
+    /*display: block;*/
+    /*width: 1300px;*/
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: right;
+    right: 0;
+    top: 0;
+    /*z-index: 1;*/
     /*top: 50%;*/
     /*margin-left: 20px;*/
     /*justify-content: space-between;*/
@@ -79,20 +97,6 @@ ul.menu li a {
 
 }
 
-/*.menu li a:hover {*/
-/*    color: #58a2de;*/
-    /*transform: scale(2.2);*/
-
-/*}*/
-
-
-
-/*@keyframes move {*/
-/*    100% {*/
-/*        top: -100%;*/
-/*    }*/
-
-/*}*/
 .menu li::after {
     content: "";
     display: block;
@@ -113,3 +117,159 @@ ul.menu li a {
 
 
 }
+
+@media (max-width: 947px) {
+
+    .img-container {
+        height: 308px;
+        width: 300px;
+        margin-right: 20px;
+
+        /*background-size: contain;*/
+    }
+
+    h1.head {
+        font-size: 40px;
+        line-height: 300px;
+        margin-left: 30px;
+        /*border-bottom: 3px dotted deeppink;*/
+
+        /*font-family: 'Edu SA Beginner', cursive;*/
+    }
+}
+@media (max-width: 768px) {
+    .img-container {
+        height: 308px;
+        width: 300px;
+        margin-right: 20px;
+
+        /*background-size: contain;*/
+    }
+
+    h1.head {
+        font-size: 30px;
+        line-height: 300px;
+        margin-left: 30px;
+        /*border-bottom: 3px dotted deeppink;*/
+
+        /*font-family: 'Edu SA Beginner', cursive;*/
+    }
+}
+
+@media (max-width: 600px) {
+    .img-container {
+        height: 258px;
+        width: 250px;
+        margin-right: 20px;
+
+        /*background-size: contain;*/
+    }
+
+    h1.head {
+        font-size: 25px;
+        line-height: 250px;
+        text-align: center;
+        margin-left: 30px;
+        /*border-bottom: 3px dotted deeppink;*/
+
+        /*font-family: 'Edu SA Beginner', cursive;*/
+    }
+
+    ul.menu li {
+        padding: 15px 10px 0;
+    }
+
+    ul.menu li a {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 411px) {
+    .header {
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);
+        position: relative;
+        /*background-image: url("../images/logo.png");*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: cover;*/
+        /*background-position: center;*/
+        /*opacity: 20%;*/
+    }
+
+   ul.menu {
+       position: relative;
+       display: block;
+       background-image: url("../images/logo.png");
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;
+       padding-left: 0;
+       /*opacity: 0.2;*/
+       /*background: rgb(0,0,0);*/
+       /*background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);*/
+
+   }
+
+    .img-container {
+        display: none;
+        /*height: 200px;*/
+        /*width: 200px;*/
+
+    }
+
+    h1.head {
+        padding: 20px;
+        font-size: 25px;
+        line-height: normal;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .hamburger-menu {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        padding: 10px 10px;
+        color: #fff;
+        font-size: 20px;
+
+    }
+
+    ul.menu li {
+        text-align: center;
+        background-color: rgba(7, 25, 107, 0.7);
+        /*background-color: rgba(243, 69, 168, 0.2);*/
+        width: 100%;
+        padding: 15px 20px;
+        /*background: rgba(0,0,0, 0.2);*/
+        /*background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,115,1) 98%, rgba(17,14,94,1) 100%);*/
+        /*opacity: 1;*/
+    }
+
+    .logo {
+        display: block;
+        /*flex-direction: row;*/
+        /*justify-content: center;*/
+        /*border-bottom: 3px dotted deeppink;*/
+        /*cornflowerblue;*/
+    }
+}
+
+
+/*@media (min-width: 1024px) {*/
+/*    h1.head {*/
+/*        font-size: 40px;*/
+/*        line-height: 400px;*/
+/*        margin-left: 40px;*/
+/*    }*/
+
+/*    .img-container {*/
+/*        height: 408px;*/
+/*        width: 400px;*/
+
+/*        !*background-size: contain;*!*/
+/*    }*/
+/*}*/
+

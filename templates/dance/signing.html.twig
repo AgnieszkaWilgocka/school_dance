@@ -5,21 +5,31 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.dance_edit'|trans }}</h1>
-    <p>{{ 'tance'|trans }}</p>
+{#    <h1>{{ 'title.dance_edit'|trans }}</h1>#}
+{#    <p>{{ 'tance'|trans }}</p>#}
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+    <div class="form-container-admin">
+    <h3>Zapisy na zajęcia: {{ dance.name }}</h3>
+
     <div class="invisible">
     {{ form_start(form) }}
     {{ form_widget(form) }}
     </div>
-    <div class="form-group row float-sm-right">
-        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary">
-    </div>
 
-    <div class="form-group row float-sm-left">
+
+    <div class="button-container">
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary button-form">
+    <div class="dance-btn">
+        <button>
         <a href="{{ url('dance_index') }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
+        </button>
+    </div>
     </div>
     {{ form_end(form) }}
-
+    </div>
 {% endblock %}

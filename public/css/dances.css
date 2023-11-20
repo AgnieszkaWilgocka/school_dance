@@ -14,6 +14,8 @@ h1.dance-h1 {
     -webkit-box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
     -moz-box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
     box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
+    font-family: 'Open Sans', sans-serif;
+
     /*background-color: #d39e00;*/
     /*padding: 20px 20px;*/
 }
@@ -45,16 +47,20 @@ h1.dance-h1 {
 .outer-box > h3, .outer-box > h4{
     text-align: left;
     padding: 30px;
+    color: #555;
 }
 
 .outer-box > h5 {
     text-align: center;
     font-style: italic;
+    color: #555;
 }
 
 .outer-box > p {
     padding: 20px 30px;
     text-align: justify;
+    color: #777;
+
     /*font-family: 'Open Sans', sans-serif;*/
     /*font-style: normal;*/
 }
@@ -122,9 +128,18 @@ h1.dance-h1 {
     padding: 10px 0;
 }
 
-.dance-card > p > a {
-    /*text-decoration: none;*/
-    color: #0022a9;
+/*.dance-card > p > a {*/
+/*    text-decoration: none;*/
+/*    color: #041654;*/
+/*}*/
+.tags {
+    text-decoration: none;
+    color: #041654;
+}
+
+.tags:hover {
+    color: #153cc7;
+
 }
 
 .dance-btn {
@@ -178,4 +193,51 @@ h1.dance-h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.button_back {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.button_back > a {
+    color: #777;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.button_back > a:hover {
+    color: #555;
+
+}
+
+@media (max-width: 600px) {
+    .dance-card {
+        width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 411px) {
+    h1.dance-h1 {
+        font-size: 25px;
+    }
+
+    .dances-box {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dance-card {
+        width: 70%;
+        margin: 30px 0;
+    }
+
+    .dance-card > h4 {
+        font-size: 20px;
+    }
 }

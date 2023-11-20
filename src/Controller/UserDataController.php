@@ -52,7 +52,7 @@ class UserDataController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message_updated_successfully')
+                $this->translator->trans('message.updated_successfully')
             );
 
             return $this->redirectToRoute('dance_index');

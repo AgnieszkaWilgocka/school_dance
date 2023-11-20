@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{ 'vogue_dance'|trans }}
+{{ 'title.vogue_dance'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -12,7 +12,17 @@
 
     <div class="outer-box">
     <div class="dance-header vogue-dance-img">
-        <h1>{{ 'vogue_dance'|trans }}</h1>
+        <h1>{{ 'title.vogue_dance'|trans }}</h1>
     </div>
+    <h3>Vogue</h3>
+        <p>
+            Początki tańca vogue sięgają lat 80 XX wieku. Wszystko zaczęło się od nowojorskich sal balowych, gdzie urządzano pokazy społeczności queer. Z czasem przerodziło się to w bitwy voguingów. Taniec vogue inspirowany jest ruchami gimnastycznymi, ale także pozami modelek z magazynu Vogue. Nazwa tego tańca wzięła się właśnie z tego czasopisma. Styl tańca z początku był statyczny. Tancerz przechodził z jednej pozycji do drugiej. Miało to metaforycznie opisywać przeglądanie stron magazynu. Kładziono wtedy nacisk na symetrie i ostre kąty wykonywanych pozycji. Vogue przeszedł z czasem do swojej ery „New Way”. Tam panowała już elastyczność i płynność wykonywanych ruchów. Zostały dodane nowe ruchy, takie jak taniec w pozycji kucanej, obroty oraz kontrolowane upadki z wymachem jednej nogi do przodu. Ostatni wymieniony krok symbolizował koniec układu tanecznego. Jest on bardzo dynamiczny i widowiskowy.
+        </p>
+
+        <p>Vogue jest stylem bardzo charakterystycznym i oryginalnym. Przyciągnęło to scenę gwiazdorską. Na największą popularyzację tego tańca przyczyniła się Madonna. Pierwszy kontakt z vogue miał miejsce na nowojorskim Manhattanie. Madonna od razu chciała dowiedzieć się jak najwięcej o tym stylu i wprowadzić go do swojej twórczości. W tym celu rozpoczęła współpracę z Josem Gutierez Xtravaganza, który nauczył ją tańca vogue, a także stworzył choreografię do jej nadchodzącego teledysku. Piosenka zajęła pierwsze miejsce w 30 krajach na świecie, a taniec vogue zyskał międzynarodową popularność. Do dzisiaj taniec vogue można spotkać w większości szkół tańca.</p>
+
+        <div class="button_back">
+            <a href="{{ url('main_page') }}" title="{{ 'action.back'|trans }}"> {{ 'action.back'|trans }}</a>
+        </div>
     </div>
 {% endblock %}

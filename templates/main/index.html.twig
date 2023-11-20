@@ -11,13 +11,9 @@
 
 {% block body %}
     <div class="header">
-        <ul class="menu">
-            <li><a href="">O nas</a></li>
-            <li><a href="">Tańce</a></li>
-            <li><a href="">Kontakt</a></li>
-            <li><a href="">Profil</a></li>
-            {#            <li></li>#}
-        </ul>
+{#        <div class="hamburger-menu">#}
+{#            <i class="fa-solid fa-bars"></i>#}
+{#        </div>#}
         <div class="logo">
             <div class="img-container">
                 {#            <img src="{{ asset('images/logo.png') }}" alt="logo">#}
@@ -28,6 +24,40 @@
             </div>
 
         </div>
+{#        <div class="phone-menu">#}
+        <ul class="menu">
+            <li><a href="#about">{{ 'about'|trans }}</a></li>
+            <li><a href="#dances">{{'dances'|trans}}</a></li>
+            <li><a href="#contact">{{ 'contact'|trans }}</a></li>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <li><a href="{{ url('user_show',  {id: app.user.id}) }}" title="{{ 'account'|trans }}">{{ 'account'|trans }}</a></li>
+            <li><a href="{{ url('dance_index') }}" title="{{ 'label.class'|trans }}"> {{ 'label.class'|trans }}</a></li>
+            {% else %}
+                <li><a href="{{ url('app_register') }}" title="{{ 'title.registration'|trans }}"> {{ 'title.registration'|trans }}</a></li>
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ url('tag_index') }}" title="{{ 'title.tag_list'|trans }}"> {{ 'title.tag_list'|trans }}</a></li>
+            <li><a href="{{ url('user_index') }}" title="{{ 'title.user_list'|trans }}"> {{ 'title.user_list'|trans }}</a></li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ url('app_logout') }}" title="{{ 'action.logout'|trans }}">{{ 'action.logout'|trans }}</a></li>
+            {% else %}
+                <li><a href="{{ url('app_login') }}" title="{{ 'action.login'|trans }}">{{ 'action.login'|trans }}</a></li>
+            {% endif %}
+        </ul>
+{#        </div>#}
+{#        <div class="logo">#}
+{#            <div class="img-container">#}
+{#                #}{#            <img src="{{ asset('images/logo.png') }}" alt="logo">#}
+{#            </div>#}
+{#            <div class="h-containter">#}
+{#                <h1 class="head">Szkoła Tańca <span>Neon</span></h1>#}
+{#                #}{#        <p>Neon</p>#}
+{#            </div>#}
+
+{#        </div>#}
     </div>
 {#    <ul class="menu">#}
 {#        <li><a href="">O nas</a></li>#}
@@ -38,17 +68,20 @@
 {#    </ul>#}
 
     <div class="mainn">
-    <h2>O nas</h2>
+    <h2 id="about" class="about_prob">{{ 'about'|trans }}</h2>
 
 <div class="outter">
-    <div class="bgc">
-    <div class="main-container">
+{#    <div class="bgc">#}
+    <div class="main-container anim_one">
 {#        <div class="main-img">#}
-            <div class="main-img-container"></div>
+            <div class="main-img-container">
+                <div class="img-one"></div>
+                <div class="img-second"></div>
+            </div>
 {#        </div>#}
         <div class="main-text">
             <div class="box-p">
-            <p class="white">
+            <p class="p_first">
                 Jesteśmy krakowską szkołą tańca.
                 Oferujemy szeroki zakres zajęć tanecznych; od kultowego hip-hopu aż po subtelny tap dance.
                 Taniec jest dla nas sztuką, w którą może zanurzyć się każdy.
@@ -59,12 +92,12 @@
         </div>
     </div>
 {#    </div>#}
-
-        <div class="second-container">
+<div class="offset"></div>
+        <div class="second-container anim_two">
 
         <div class="second-text">
             <div class="second-text-container">
-                <p>
+                <p class = "p_second">
                     Wykwalifikowana kadra zadba o każdy szczegół,
                     abyś mógł/mogła poczuć się na zajęciach wyjątkowo.
                     Nasi instruktorzy to świetni tancerze, którzy zarażają wokoło swoją pasją.
@@ -74,49 +107,48 @@
             </div>
         </div>
             <div class="second-img-container">
-
+                <div class="img-third"></div>
+                <div class="img-fourth"></div>
             </div>
 
         </div>
-    </div>
+{#    </div>#}
 {#</div>#}
         <div class="dance-container">
-        <h3>Nasze zajęcia</h3>
-            <div class="dance-first-row-container">
+        <h2 id="dances">{{'dances'|trans}}</h2>
+            <div class="dance-cards-container">
             <div class="card">
-                <h4>Salsa</h4>
+                <h4>{{ 'title.salsa_dance'|trans }}</h4>
                 <div class="img-card img-card-one">
                     <p><a href="{{ url('salsa_dance') }}">Zobacz więcej</a></p>
                 </div>
             </div>
             <div class="card">
-                <h4>Hip hop</h4>
+                <h4>{{ 'title.hip-hop_dance'|trans }}</h4>
                 <div class="img-card img-card-two">
                     <p><a href="{{ url('hip-hop_dance') }}">Zobacz więcej</a></p>
                 </div>
             </div>
             <div class="card">
-                <h4>Stepowanie</h4>
+                <h4>{{ 'title.tap_dance'|trans }}</h4>
                 <div class="img-card img-card-three">
                     <p><a href="{{ url('tap_dance') }}">Zobacz więcej</a></p>
                 </div>
             </div>
-            </div>
-            <div class="dance-second-row-container">
                 <div class="card">
-                    <h4>Vogue</h4>
+                    <h4>{{ 'title.vogue_dance'|trans }}</h4>
                     <div class="img-card img-card-four">
                         <p><a href="{{ url('vogue_dance') }}">Zobacz więcej</a></p>
                     </div>
                 </div>
                 <div class="card">
-                    <h4>Modern</h4>
+                    <h4>{{ 'title.modern_dance'|trans }}</h4>
                     <div class="img-card img-card-five">
                         <p><a href="{{ url('modern_dance') }}">Zobacz więcej</a></p>
                     </div>
                 </div>
                 <div class="card">
-                    <h4>Popping</h4>
+                    <h4>{{ 'title.popping_dance'|trans }}</h4>
                     <div class="img-card img-card-six">
                         <p><a href="{{ url('popping_dance') }}">Zobacz więcej</a></p>
                     </div>
@@ -125,7 +157,7 @@
         </div>
 
         <div class="info">
-            <h3>Kontakt</h3>
+            <h3 id="contact">{{ 'contact'|trans }}</h3>
             <div class="info-flex">
             <div class="address">
                 <p><i class="fa-solid fa-location-dot"></i> ul.Nowa 2</p>

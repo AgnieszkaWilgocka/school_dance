@@ -34,10 +34,11 @@ class DanceController extends AbstractController
     }
 
     /**
-     *
+     * @param Request $request
      *
      * @return Response
      *
+     * @IsGranted("ROLE_USER")
      */
     #[Route(name: 'dance_index', methods: 'GET')]
     public function index(Request $request): Response
@@ -60,18 +61,19 @@ class DanceController extends AbstractController
 
         return $filters;
     }
-    #[Route('/{id}',
-    name: 'dance_show',
-    requirements: ['id' => '[1-9]\d*'],
-    methods: 'GET',
-    )]
-    public function show(Dance $dance): Response
-    {
-        return $this->render(
-            'dance/show.html.twig',
-            ['dance' => $dance]
-        );
-    }
+
+//    #[Route('/{id}',
+//    name: 'dance_show',
+//    requirements: ['id' => '[1-9]\d*'],
+//    methods: 'GET',
+//    )]
+//    public function show(Dance $dance): Response
+//    {
+//        return $this->render(
+//            'dance/show.html.twig',
+//            ['dance' => $dance]
+//        );
+//    }
 
     /**
      * @param Request $request
@@ -107,25 +109,7 @@ class DanceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $dance_name = $form->get("name")->getData();
             var_dump($dance_name);
-//            if($dance_name == $myClasses->getDance()->getName()) {
-//                if($user->getId() == $myClasses->getAuthor()->getId()) {
-//                    return $this->redirectToRoute('dance_index');
-//                }
-//            }
 
-
-
-            //ze juz jakies zajecia ma
-            //var_dump($myClasses->getId());
-            //if($user->getId() === $myClasses->getAuthor()->getId()) {
-
-            //}
-//            $check = $myClasses->getDance();
-//            if ($check->getName() == $dance->getName()) {
-//                if ($user->getId() == $myClasses->getAuthor()->getId()) {
-//                    return $this->redirectToRoute('dance_index');
-//                }
-//            }
             $spot = $form->get("field")->getData();
             $spot--;
             $myClassees->setDance($dance);
@@ -133,6 +117,11 @@ class DanceController extends AbstractController
 
             $this->myClassesRepository->save($myClassees);
             $this->danceService->save($dance);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.signed_up_successfully')
+            );
 
             return $this->redirectToRoute('my_classes_index');
         }
@@ -142,7 +131,6 @@ class DanceController extends AbstractController
             [
                 'form' => $form->createView(),
                 'dance' =>$dance,
-//                'tance' => $tance,
 
             ]
         );
@@ -244,6 +232,14 @@ class DanceController extends AbstractController
     )]
     public function delete(Request $request, Dance $dance): Response
     {
+//        if($myClasses->getDance()->count()) {
+//        if($dance->getField() < 20) {
+        if(!$this->danceService->canBeDeleted($dance)) {
+            $this->addFlash('warning', $this->translator->trans('message.dance_contains_my_classes'));
+
+            return $this->redirectToRoute('dance_index');
+        }
+
         $form = $this->createForm(
             FormType::class,
             $dance,

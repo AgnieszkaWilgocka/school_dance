@@ -18,9 +18,9 @@
     <table class="table table-striped">
     <thead>
     <tr>
-        <th>{{ 'label_email'|trans }}</th>
-        <th>{{ 'label_nick' }}</th>
-        <th>{{ 'label_actions'|trans }}</th>
+        <th>{{ 'label.email'|trans }}</th>
+        <th>{{ 'label.nick'|trans }}</th>
+        <th>{{ 'label.actions'|trans }}</th>
 
     </tr>
     </thead>
@@ -30,19 +30,19 @@
             <td>{{ user.email }}</td>
             <td>{{ user.userData.nick }}</td>
             <td class="admin-td">
-                <a href="{{ url('user_show', {id: user.id}) }}" title="{{ 'action_view'|trans }}">
+                <a href="{{ url('user_show', {id: user.id}) }}" title="{{ 'action_view'|trans }}" class="view-button">
                     {{ 'action_view'|trans }}
                 </a>
 {#            </td>#}
 {#            <td>#}
-                <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_edit'|trans }}">
-                    {{ 'action_change_password'|trans }}
-                </a>
+{#                <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_edit'|trans }}">#}
+{#                    {{ 'action_change_password'|trans }}#}
+{#                </a>#}
 {#            </td>#}
 {#            <td>#}
-                <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}">
-                    {{ 'action_edit_nick'|trans }}
-                </a>
+{#                <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}">#}
+{#                    {{ 'action_edit_nick'|trans }}#}
+{#                </a>#}
             </td>
         </tr>
     {% endfor %}

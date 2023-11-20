@@ -2,9 +2,25 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="file.ext">
     <body>
+    <trans-unit id="about">
+       <source>about</source>
+       <target>About</target>
+    </trans-unit>
+     <trans-unit id="account">
+        <source>account</source>
+        <target>Account</target>
+     </trans-unit>
+     <trans-unit id="action.back">
+        <source>action.back</source>
+        <target>Back</target>
+     </trans-unit>
     <trans-unit id="action.back_to_list">
        <source>action.back_to_list</source>
        <target>Back to list</target>
+     </trans-unit>
+     <trans-unit id="action.change_password">
+        <source>action.change_password</source>
+        <target>Change password</target>
      </trans-unit>
      <trans-unit id="action_create">
         <source>action_create</source>
@@ -22,25 +38,61 @@
          <source>action_edit_nick</source>
          <target>Edit nick</target>
       </trans-unit>
+      <trans-unit id="action.login">
+          <source>action.login</source>
+          <target>Login</target>
+      </trans-unit>
+      <trans-unit id="action.logout">
+          <source>action.logout</source>
+          <target>Logout</target>
+      </trans-unit>
       <trans-unit id="action.save">
          <source>action.save</source>
          <target>Save</target>
+      </trans-unit>
+      <trans-unit id="action.search_classes">
+         <source>action.search_classes</source>
+         <target>Search classes</target>
       </trans-unit>
       <trans-unit id="action_sign">
          <source>action_sign</source>
          <target>Sign in</target>
       </trans-unit>
+      <trans-unit id="action.sign_off">
+          <source>action.sign_off</source>
+           <target>Sign off</target>
+      </trans-unit>
       <trans-unit id="action_view">
          <source>action_view</source>
          <target>View</target>
       </trans-unit>
+      <trans-unit id="action.view_class">
+         <source>action.view_class</source>
+         <target>Your classes</target>
+      </trans-unit>
+      <trans-unit id="dances">
+         <source>dances</source>
+         <target>Dances</target>
+       </trans-unit>
+       <trans-unit id="contact">
+          <source>contact</source>
+          <target>Contact</target>
+       </trans-unit>
       <trans-unit id="label.actions">
         <source>label.actions</source>
         <target>Actions</target>
       </trans-unit>
+      <trans-unit id="label.class">
+         <source>label.class</source>
+         <target>Classes</target>
+      </trans-unit>
       <trans-unit id="label.content">
         <source>label.content</source>
         <target>Content</target>
+      </trans-unit>
+      <trans-unit id="label.created_at">
+         <source>label.created_at</source>
+         <target>Created at</target>
       </trans-unit>
       <trans-unit id="label.email">
         <source>label.email</source>
@@ -50,21 +102,53 @@
         <source>label.id</source>
         <target>Id</target>
       </trans-unit>
-      <trans-unit id="label_password">
-        <source>label_password</source>
+      <trans-unit id="label.name">
+         <source>label.name</source>
+         <target>Name</target>
+      </trans-unit>
+      <trans-unit id="label.nick">
+         <source>label.nick</source>
+         <target>Nick</target>
+      </trans-unit>
+      <trans-unit id="label.password">
+        <source>label.password</source>
         <target>Password</target>
       </trans-unit>
-      <trans-unit id="label_password_repeat">
-         <source>label_password_repeat</source>
+      <trans-unit id="label.repeat_password">
+         <source>label.repeat_password</source>
          <target>Repeat Password</target>
       </trans-unit>
       <trans-unit id="label.title">
         <source>label.title</source>
         <target>Title</target>
       </trans-unit>
+      <trans-unit id="label.spots">
+         <source>label.spots</source>
+         <target>Number of spots</target>
+       </trans-unit>
+       <trans-unit id="label.tag">
+          <source>label.tag</source>
+          <target>Tag</target>
+      </trans-unit>
       <trans-unit id="label.tags">
         <source>label.tags</source>
         <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="label.updated_at">
+        <source>label.updated_at</source>
+        <target>Updated at</target>
+      </trans-unit>
+      <trans-unit id="main_page">
+         <source>main_page</source>
+         <target>Main page</target>
+      </trans-unit>
+      <trans-unit id="message.created_successfully">
+         <source>message.created_successfully</source>
+         <target>Created successfully</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+         <source>message.deleted_successfully</source>
+         <target>Deleted successfully</target>
       </trans-unit>
       <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
@@ -74,13 +158,57 @@
         <source>message.record_not_found</source>
         <target>Record not found.</target>
       </trans-unit>
+      <trans-unit id="message.signed_off_successfullyt">
+         <source>message.signed_off_successfully</source>
+         <target>Signed off successfully</target>
+      </trans-unit>
+      <trans-unit id="message.signed_up_successfullyt">
+         <source>message.signed_up_successfully</source>
+         <target>Signed up successfully</target>
+      </trans-unit>
+      <trans-unit id="message.updated_successfully">
+         <source>message.updated_successfully</source>
+         <target>Updated successfully</target>
+      </trans-unit>
       <trans-unit id="title.change_password">
         <source>title.change_password</source>
         <target>Change password</target>
       </trans-unit>
+      <trans-unit id="title.dance_create">
+         <source>title.dance_create</source>
+         <target>Dance create</target>
+      </trans-unit>
+      <trans-unit id="title.dance_delete">
+         <source>title.dance_delete</source>
+         <target>Dance delete</target>
+      </trans-unit>
+      <trans-unit id="title.dance_edit">
+         <source>title.dance_edit</source>
+         <target>Dance edit</target>
+      </trans-unit>
       <trans-unit id="title.dance_list">
           <source>title.dance_list</source>
          <target>Dance list</target>
+      </trans-unit>
+      <trans-unit id="title.hip-hop_dance">
+         <source>title.hip-hop_dance</source>
+         <target>Hip-hop</target>
+      </trans-unit>
+      <trans-unit id="title.modern_dance">
+         <source>title.modern_dance</source>
+         <target>Modern</target>
+      </trans-unit>
+      <trans-unit id="title.my_classes">
+         <source>title.my_classes</source>
+         <target>My classes</target>
+      </trans-unit>
+      <trans-unit id="title.my_classes_delete">
+         <source>title.my_classes_delete</source>
+         <target>Sign out from classes</target>
+      </trans-unit>
+      <trans-unit id="title.popping_dance">
+         <source>title.popping_dance</source>
+         <target>Popping</target>
       </trans-unit>
       <trans-unit id="title.record_list">
         <source>title.record_list</source>
@@ -93,6 +221,14 @@
        <trans-unit id="title.register">
          <source>title.register</source>
          <target>Register</target>
+      </trans-unit>
+      <trans-unit id="title.registration">
+         <source>title.registration</source>
+         <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="title.salsa_dance">
+         <source>title.salsa_dance</source>
+         <target>Salsa</target>
       </trans-unit>
       <trans-unit id="title.tag_create">
         <source>title.tag_create</source>
@@ -109,6 +245,26 @@
      <trans-unit id="title.tag_list">
         <source>title.tag_list</source>
         <target>Tags list</target>
+      </trans-unit>
+      <trans-unit id="title.tap_dance">
+        <source>title.tap_dance</source>
+        <target>Tap dance</target>
+      </trans-unit>
+      <trans-unit id="title.user_data_edit">
+        <source>title.user_data_edit</source>
+        <target>Edit nick</target>
+      </trans-unit>
+      <trans-unit id="title.user_details">
+         <source>title.user_details</source>
+         <target>User details</target>
+      </trans-unit>
+      <trans-unit id="title.user_list">
+         <source>title.user_list</source>
+         <target>Users</target>
+      </trans-unit>
+      <trans-unit id="title.vogue_dance">
+        <source>title.vogue_dance</source>
+        <target>Vogue dance</target>
       </trans-unit>
     </body>
   </file>

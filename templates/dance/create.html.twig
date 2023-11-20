@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block body %}
+    <div class="my-classes_header">
+        <div class="head-image"></div>
+        <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
+    </div>
+
+    <div class="form-container-admin">
 <h1>{{ 'title.dance_create'|trans }}</h1>
 {{ form_start(form) }}
 {{ form_widget(form) }}
@@ -19,4 +25,5 @@
 </div>
 
 {{ form_end(form) }}
+    </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{ 'title.myClasses_list'|trans }}
+{{ 'title.my_classes'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -10,56 +10,50 @@
         <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
     </div>
 
+    <main role="main" class="container-fluid">
+        <div class="container-fluid">
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </main>
 
 {#    <h1>{{ 'title.myClasses_list'|trans }}</h1>#}
     <h1 class="h-classes">Jesteś zapisany na następujące zajęcia: </h1>
     <div class="my-classes_container">
 
     {% if pagination is defined and pagination|length %}
-{#        <table class="table table-striped">#}
-{#            <thead>#}
-{#            <tr>#}
         <div class="my-classes_info">
-{#            <p>{{ 'label_name'|trans }}</p>#}
-            <p>Zajęcia</p>
-{#            <p>{{ 'label_actions'|trans }}</p>#}
-            <p>Akcje</p>
+            <p>{{'title.my_classes'|trans}}</p>
+            <p>{{ 'label.actions'|trans }}</p>
         </div>
-{#                <th>{{ 'label_name'|trans }}</th>#}
-{#                <th>{{ 'label_actions'|trans }}</th>#}
-{#            </tr>#}
-{#            </thead>#}
             {% for my_classes in pagination.items %}
                 <div class="classes-flex">
-
-{#                <div class="my-classes">#}
-
-{#                <tr>#}
                 <p>{{ my_classes.dance.name }}</p>
-{#                </div>#}
-{#                    <td>{{ my_classes.dance.name }}</td>#}
-{#                </tr>#}
-{#                    <td>#}
-{#                <div class="my-classes-delete">#}
                         <p>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="{{ url('my_classes_delete', {id: my_classes.id}) }}" title="{{ 'action_delete'|trans }}">
-                                Wypisz się
-{#                            {{ 'action_delete'|trans }}#}
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="{{ url('my_classes_delete', {id: my_classes.id}) }}" title="{{ 'action.sign_off'|trans }}">
+{#                                Wypisz się#}
+                            {{ 'action.sign_off'|trans }}
                             </a>
                         </p>
-{#                </div>#}
                 </div>
-{#                    </td>#}
-
-{#                </tr>#}
             {% endfor %}
-{#        </table>#}
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
     {% else %}
         <p>{{ 'message.empty_list'|trans }}</p>
     {% endif %}
+    <div class="dance-btn">
+        <button>
+            <a href="{{ url('dance_index') }}" title="{{ 'action.search_classes'|trans }}">
+                {{ 'action.search_classes'|trans }}
+            </a>
+        </button>
     </div>
 {#    <div class="header">#}
 {#        <div class="logo">#}

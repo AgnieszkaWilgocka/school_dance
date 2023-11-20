@@ -11,7 +11,7 @@ class TagFixtures extends AbstractBaseFixtures
     {
         $this->createMany(10, 'tags', function (int $i) {
             $tag = new Tag();
-            $tag->setTitle($this->faker->titleFemale());
+            $tag->setTitle($this->faker->colorName());
             $tag->setCreatedAt(\DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days')));
             $tag->setUpdatedAt(\DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days')));
             $this->manager->persist($tag);

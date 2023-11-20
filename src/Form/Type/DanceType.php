@@ -35,7 +35,7 @@ class DanceType extends AbstractType
             'field',
             ChoiceType::class,
             [
-                'label' => 'label.field',
+                'label' => 'label.spots',
                 'required' => true,
                 'choices' => range(2,21),
             ]
@@ -45,7 +45,7 @@ class DanceType extends AbstractType
             'tags',
             TextType::class,
             [
-                'label' => 'label_tags',
+                'label' => 'label.tags',
                 'required' => false,
                 'attr' => ['max_length' => 128],
             ]

@@ -8,11 +8,11 @@
     padding: 20px;
 }
 
-.admin-td > a {
-    color: #07196b;
-    text-decoration: none;
-    padding: 10px;
-}
+/*.admin-td > a {*/
+/*    color: #07196b;*/
+/*    text-decoration: none;*/
+/*    padding: 10px;*/
+/*}*/
 
 /*USER*/
 
@@ -92,7 +92,62 @@ button.user-btn:hover a {
     color: #58a2de;
 }
 
+.delete-button, .edit-button, .create-button {
+    text-decoration: none;
+    padding: 10px;
+}
+.create-button {
+    color: #153cc7;
+}
+
+.delete-button {
+    color: red;
+}
+
+.edit-button {
+    color: #d39e00;
+}
+.create-button:hover {
+    color: #051971;
+}
+
+.delete-button:hover {
+    color: darkred;
+}
+
+.edit-button:hover {
+    color: #a77b05;
+}
+
 /*.action-btn {*/
 /*    padding: 10px 15px;*/
 /*    background-color: #fff;*/
 /*}*/
+
+.form-container-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 auto;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
+    box-shadow: 8px 8px 24px 0px rgba(69, 17, 165, 0.21);
+}
+
+.form-container-admin > h1 {
+    text-align: center;
+    padding: 30px;
+}
+
+.btn-link, .view-button {
+    text-decoration: none;
+    color: #153cc7;
+}
+
+.btn-link:hover, .view-button:hover {
+    color: #051971;
+}
+

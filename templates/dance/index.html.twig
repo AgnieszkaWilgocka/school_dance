@@ -10,6 +10,18 @@
         <h1 class="h-header"><a href="{{ url('main_page') }}">Szkoła Tańca <span>Neon</span></a></h1>
     </div>
 
+    <main role="main" class="container-fluid">
+        <div class="container-fluid">
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </main>
+
     <h1 class="dance-h1">{{ 'title.dance_list'|trans }}</h1>
 
         {% if pagination is defined and pagination.items|length %}
@@ -18,11 +30,11 @@
             {% for dance in pagination.items %}
         <div class="dance-card">
             <h4>{{ dance.name }}</h4>
-            <p><strong>Liczba miejsc:</strong>{{ dance.field }}</p>
-            <p><strong>Tagi:</strong>
+            <p><strong>{{ 'label.spots'|trans }}:</strong>{{ dance.field }}</p>
+            <p><strong>{{ 'label.tags'|trans }}:</strong>
                 {% if dance.tags is defined and dance.tags|length %}
                     {% for tag in dance.tags %}
-                        <a href="{{ url('dance_index', {'filters.tag_id': tag.id}) }}" title="{{ tag.title }}">
+                        <a href="{{ url('dance_index', {'filters.tag_id': tag.id}) }}" title="{{ tag.title }}" class="tags">
                             {{ tag.title }}
                         </a>
                     {% endfor %}
@@ -36,6 +48,19 @@
                         {{ 'action_sign'|trans }}
                     </a>
             </button>
+{#                <div class="admin-delete-button">#}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('dance_create') }}" title="{{ 'action_create'|trans }}" class="create-button">
+                        {{ 'action_create'|trans }}
+                    </a>
+                    <a href="{{ url('dance_edit', {id: dance.id}) }}" title="{{ 'action_edit'|trans }}" class="edit-button">
+                        {{ 'action_edit'|trans }}
+                    </a>
+                    <a href="{{ url('dance_delete', {id: dance.id}) }}" title="{{ 'action_delete'|trans }}" class="delete-button">
+                        {{ 'action_delete'|trans }}
+                    </a>
+                {% endif %}
+{#                </div>#}
             </div>
 
 {#                {% endif %}#}

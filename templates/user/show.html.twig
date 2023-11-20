@@ -19,7 +19,7 @@
 {#            <h3>{{  }}</h3>#}
             <h4><i class="fa-solid fa-user"></i>Profil tancerza</h4>
             <p>{{ 'label.nick'|trans }} : {{ user.userData.nick }} <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}"><i class="fa-solid fa-pen-to-square"></i></a></p>
-            <p>{{ 'label.email' }} : {{ user.email }}</p>
+            <p>{{ 'label.email'|trans }} : {{ user.email }}</p>
             <div class="user-info">
 {#                <button>#}
 {#                <a href="{{ url('user_data_edit', {id:user.userData.id}) }}" title="{{ 'action_edit_nick'|trans }}">#}
@@ -27,15 +27,15 @@
 {#                </a>#}
 {#                </button>#}
                 <button class="user-btn">
-                    <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action_edit'|trans }}">
-{#                        {{ 'action_change_password'|trans }}#}
-                        Zmień hasło
+                    <a href="{{ url('change_password', {id: user.id}) }}" title="{{ 'action.change_password'|trans }}">
+                        {{ 'action.change_password'|trans }}
+{#                        Zmień hasło#}
                     </a>
                 </button>
                 <button class="user-btn">
-                    <a href="{{ url('my_classes_index') }}" title="{{ 'action_view_class'|trans }}">
-{#                        {{ 'action_view_class'|trans }}#}
-                        Moje zajęcia
+                    <a href="{{ url('my_classes_index') }}" title="{{ 'action.view_class'|trans }}">
+                        {{ 'action.view_class'|trans }}
+{#                        Moje zajęcia#}
                     </a>
                 </button>
             </div>

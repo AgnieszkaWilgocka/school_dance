@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Dance;
 use App\Entity\MyClasses;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -30,6 +31,17 @@ class MyClassesRepository extends ServiceEntityRepository
         return $this->getOrCreateQueryBuilder();
     }
 
+    public function countByDance(Dance $dance): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('my_classes.id'))
+            ->where('my_classes.dance = :dance')
+            ->setParameter(':dance', $dance)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('my_classes');
@@ -56,6 +68,8 @@ class MyClassesRepository extends ServiceEntityRepository
        $this->_em->remove($myClasses);
        $this->_em->flush();
    }
+
+
 
 //    /**
 //     * @return MyClasses[] Returns an array of MyClasses objects

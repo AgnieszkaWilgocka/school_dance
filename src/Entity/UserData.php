@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserrDataRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserrDataRepository::class)]
 #[ORM\Table(name: 'users_data')]
@@ -15,6 +16,7 @@ class UserData
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(min: 3, max:64)]
     private ?string $nick = null;
 
     /**

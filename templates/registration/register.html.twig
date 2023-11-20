@@ -22,23 +22,28 @@
 {#    </div>#}
 {#    </div>#}
     <div class="register-container">
-
-        <div class="form-container">
+        <div class="form-container-2">
 {#            <div class="h-box">#}
 {#            </div>#}
 {#            <div class="form-text-container">#}
 {#                <p>Dołącz do naszej tanecznej rodziny!</p>#}
 {#            </div>#}
             <div class="form-register-container">
-                <h1 class="h-register">{{ 'title.register'|trans }}</h1>
+                <h1 class="h-form">{{ 'title.register'|trans }}</h1>
 
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <input type="submit" value="{{ 'action.save'|trans }}" class="form-btn">
+                <div class="info-register">
+                    <input type="submit" value="{{ 'action.save'|trans }}" class="form-btn">
+                    <p class="account-click">Masz już konto? Zaloguj się <a class="account" href="{{ url('app_login') }}">tutaj</a></p>
+                </div>
             </div>
 
-            <p class="account-click">Masz już konto? Zaloguj się <a class="account" href="">tutaj</a></p>
+
+
         </div>
+        <div class="register-img-container"></div>
+
 
 {#<div class="form-group row float-sm-right">#}
 {#        <button>#}

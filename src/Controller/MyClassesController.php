@@ -86,7 +86,7 @@ class MyClassesController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message.deleted_successfully')
+                $this->translator->trans('message.signed_off_successfully')
             );
 
             return $this->redirectToRoute('my_classes_index');
